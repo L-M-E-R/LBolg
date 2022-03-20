@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * 将AuthenticationManager注入容器
+     * 将AuthenticationManager注入容器test
      */
     @Bean
     @Override
