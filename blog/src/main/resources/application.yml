@@ -1,0 +1,40 @@
+# tomcat端口
+server:
+  port: 7777
+
+spring:
+  # Springboot2.6之后默认不允许循环依赖,我们在这里允许
+  main:
+    allow-circular-references: true
+
+  # mysql
+  datasource:
+    url: "jdbc:mysql://localhost:3306/sg_blog?useUnicode=true&characterEncoding=utf8&useSSL=true&serverTimezone=GMT%2B8"
+    username: "root"
+    password: "password"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # redis
+  redis:
+    port: 6379
+    password: "Liuzijian?"
+    host: 59.110.18.75
+
+  # servlet文件上传
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 5MB
+
+mybatis-plus:
+  configuration:
+    # 日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      # 逻辑删除
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      # 主键自增
+      id-type: auto
