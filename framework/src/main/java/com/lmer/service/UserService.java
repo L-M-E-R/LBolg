@@ -1,6 +1,7 @@
 package com.lmer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lmer.domain.ResponseResult;
 import com.lmer.domain.entity.User;
 
 
@@ -11,5 +12,7 @@ import com.lmer.domain.entity.User;
  * @since 2022-03-20 21:35:51
  */
 public interface UserService extends IService<User> {
+
+    ResponseResult userInfo();
 
 }

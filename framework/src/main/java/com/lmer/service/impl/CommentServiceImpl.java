@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -38,9 +39,12 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         // 查根评论
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<Comment>();
 
-        queryWrapper.eq(Comment::getArticleId, articleId)
+        queryWrapper
                 // 是文章评论
-                .eq(Comment::getType, SystemConstants.COMMENT_TYPE_ARTICLE)
+                .eq(Objects.nonNull(articleId), Comment::getArticleId, articleId)
+                .eq(Objects.nonNull(articleId), Comment::getType, SystemConstants.COMMENT_TYPE_ARTICLE)
+                // 是友链评论
+                .eq(Objects.isNull(articleId), Comment::getType, SystemConstants.COMMENT_TYPE_LINK)
                 // 是根评论
                 .eq(Comment::getRootId, SystemConstants.ROOT_COMMENT);
 

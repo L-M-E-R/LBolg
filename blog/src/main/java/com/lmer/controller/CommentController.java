@@ -20,6 +20,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/comment")
@@ -31,7 +32,15 @@ public class CommentController {
 
     @GetMapping("/commentList")
     public ResponseResult getCommentList(Long articleId, Integer pageNum, Integer pageSize){
+        if (Objects.isNull(articleId)){
+            throw new SystemException(AppHttpCodeEnum.BAD_REQUEST);
+        }
         return commentService.getCommentList(articleId, pageNum, pageSize);
+    }
+
+    @GetMapping("/linkCommentList")
+    public ResponseResult linkCommentList(Integer pageNum, Integer pageSize){
+        return commentService.getCommentList(null, pageNum, pageSize);
     }
 
 
