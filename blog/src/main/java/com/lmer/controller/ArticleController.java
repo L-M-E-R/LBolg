@@ -6,6 +6,7 @@
  **/
 package com.lmer.controller;
 
+import com.lmer.annotation.HttpLog;
 import com.lmer.domain.ResponseResult;
 import com.lmer.enums.AppHttpCodeEnum;
 import com.lmer.service.ArticleService;
@@ -31,6 +32,7 @@ public class ArticleController {
     }
 
     @GetMapping("/articleList")
+    @HttpLog(businessName = "获取文章列表")
     public ResponseResult articleList(Integer pageNum, Integer pageSize, Long categoryId){
         if(Objects.isNull(pageNum) || Objects.isNull(pageSize)){
             return ResponseResult.errorResult(AppHttpCodeEnum.BAD_REQUEST);

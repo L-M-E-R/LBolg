@@ -7,11 +7,9 @@
 package com.lmer.handler.security;
 
 import com.alibaba.fastjson.JSON;
-
 import com.lmer.domain.ResponseResult;
 import com.lmer.enums.AppHttpCodeEnum;
 import com.lmer.utils.WebUtils;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.core.AuthenticationException;

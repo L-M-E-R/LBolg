@@ -6,15 +6,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lmer.constants.SystemConstants;
 import com.lmer.domain.ResponseResult;
 import com.lmer.domain.entity.Comment;
-import com.lmer.domain.entity.User;
 import com.lmer.domain.vo.CommentVo;
 import com.lmer.domain.vo.PageVo;
 import com.lmer.mapper.CommentMapper;
 import com.lmer.service.CommentService;
 import com.lmer.service.UserService;
 import com.lmer.utils.BeanCopyUtils;
-import com.lmer.utils.SecurityUtils;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

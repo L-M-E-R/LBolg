@@ -7,8 +7,8 @@
 package com.lmer.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lmer.domain.entity.Article;
 import com.lmer.domain.ResponseResult;
+import com.lmer.domain.entity.Article;
 
 public interface ArticleService extends IService<Article> {
     /**
