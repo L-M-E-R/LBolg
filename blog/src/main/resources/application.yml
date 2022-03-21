@@ -17,8 +17,8 @@ spring:
   # redis
   redis:
     port: 6379
-    password: "Liuzijian?"
-    host: 59.110.18.75
+    password:
+    host:
 
   # servlet文件上传
   servlet:

@@ -13,6 +13,7 @@ import com.lmer.mapper.CommentMapper;
 import com.lmer.service.CommentService;
 import com.lmer.service.UserService;
 import com.lmer.utils.BeanCopyUtils;
+import com.lmer.utils.SecurityUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,6 +53,12 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         commentVos = setChildComments(commentVos);
 
         return ResponseResult.okResult(new PageVo(commentVos, page.getTotal()));
+    }
+
+    @Override
+    public ResponseResult addComment(Comment comment) {
+        save(comment);
+        return ResponseResult.okResult();
     }
 
     private List<CommentVo> getCommentVos(List<Comment> list){

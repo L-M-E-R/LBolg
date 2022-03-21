@@ -14,4 +14,6 @@ import com.lmer.domain.entity.Comment;
 public interface CommentService extends IService<Comment> {
 
     ResponseResult getCommentList(Long articleId, Integer pageNum, Integer pageSize);
+
+    ResponseResult addComment(Comment comment);
 }

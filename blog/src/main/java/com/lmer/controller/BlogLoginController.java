@@ -7,6 +7,7 @@ import com.lmer.enums.AppHttpCodeEnum;
 import com.lmer.exception.SystemException;
 import com.lmer.service.BlogLoginService;
 import com.lmer.utils.RedisCache;
+import com.lmer.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -35,10 +36,7 @@ public class BlogLoginController {
     @PostMapping("/logout")
     public ResponseResult logout(@RequestHeader("token") String token){
         // 从SecurityContextHolder中拿到在jwtFilter中已经装入的授权对象
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-
-        Long userId = loginUser.getUser().getId();
+        Long userId = SecurityUtils.getUserId();
 
         redisCache.deleteObject("bloglogin:" + userId);
 
